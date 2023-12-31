@@ -1,0 +1,23 @@
+%option noyywrap
+%{
+	#include<stdio.h>
+	int count=0;
+	double sum=0.0;
+%}
+
+%%
+[0-9]+ {
+	 double num=atof(yytext);
+	 sum=sum+num;
+	 count++;
+}
+\n {
+	printf("The Average is %0.2f\n",sum/count);
+	count=0;
+	sum=0.0;
+}
+%%
+int main()
+{	yylex();
+	return 0;
+}

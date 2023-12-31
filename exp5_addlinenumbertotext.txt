@@ -1,0 +1,17 @@
+
+%option noyywrap
+%{
+	#include<stdio.h>
+	int line_num=0;
+%}
+
+line .*\n
+
+%%
+{line} {printf("%d %s",line_num++,yytext);}
+%%
+int main(int args,char* argv[])
+{	yyin=fopen("pocs.txt","r+");
+	yylex();
+	return 0;
+}

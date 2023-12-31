@@ -1,0 +1,15 @@
+%option noyywrap
+%{
+	#include<stdio.h>
+%}
+
+%%
+[0-9]+ {printf("%s is an integer",yytext);}
+[0-9]+[.][0-9] {printf("%s is a real no",yytext);}
+[a-zA-Z]+ {printf("%s is a word",yytext);}
+%%
+int main()
+{	printf("Enter String: \n");
+	yylex();
+	return 0;
+}

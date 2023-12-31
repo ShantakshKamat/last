@@ -1,0 +1,15 @@
+%option noyywrap
+%{
+#include<stdio.h>
+int line=0;
+%}
+%%
+\n line++;
+%%
+int main(int args[],char*argv[])
+{
+yyin=fopen("abc.txt","x+");
+yylex();
+printf("Number of lines is %d",line);
+return 0;
+}

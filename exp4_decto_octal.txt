@@ -1,0 +1,22 @@
+%option noyywrap
+%{
+	#include<stdio.h>
+%}
+
+%%
+[0-9]+ {
+	 int decimal=atoi(yytext);
+	 int octal=0,i=1;
+	 while(decimal!=0){
+		octal=octal+(decimal%8)*i;
+		decimal=decimal/8;
+		i=i*10; }
+	 printf("Octal is %d \n",octal);
+}
+%%
+int main()
+{
+	printf("Enter Decimal Number: \n");
+	yylex();
+	return 0;
+}
